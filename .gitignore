@@ -1,0 +1,12 @@
+# Binaries
+stack
+/bin/
+
+*.o
+*.a
+*.out
+
+# For Emacs
+*~
+\#*\#
+.\#*

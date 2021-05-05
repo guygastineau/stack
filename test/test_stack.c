@@ -51,6 +51,30 @@ static void test_push_several(void)
 
 }
 
+static void test_pop_failure(void)
+{
+  Stack st = mkStack();
+
+  SData data;
+  TEST_ASSERT_EQUAL_INT_MESSAGE(-1, stPop(NULL, &data),
+                                "Can't pop from NULL reference");
+
+  TEST_ASSERT_EQUAL_INT_MESSAGE(-1, stPop(&st, &data),
+                                "Can't pop from empty stack");
+
+  TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 1),
+                                "Failed to push to stack");
+
+  TEST_ASSERT_EQUAL_INT_MESSAGE(-1, stPop(&st, NULL),
+                                "Can't pop to NULL");
+  TEST_ASSERT_EQUAL_size_t_MESSAGE(1, stLength(&st),
+                                   "Failed pop shouldn't have changed length");
+
+  stDestroy(&st, NULL);
+
+  TEST_ASSERT_NULL_MESSAGE(st, "st wasn't NULL after Stack deallocation");
+}
+
 static void test_pop_one(void)
 {
   Stack st = mkStack();
@@ -105,6 +129,27 @@ static void test_pop_several(void)
 
   // Left one, so we need to destroy it.
 
+  stDestroy(&st, NULL);
+
+  TEST_ASSERT_NULL_MESSAGE(st, "st wasn't NULL after Stack deallocation");
+}
+
+static void test_peek_failure(void)
+{
+  Stack st = mkStack();
+
+  SData data;
+  TEST_ASSERT_EQUAL_INT_MESSAGE(-1, stPeek(NULL, &data),
+                                "Can't pop from NULL reference");
+
+  TEST_ASSERT_EQUAL_INT_MESSAGE(-1, stPeek(&st, &data),
+                                "Can't pop from empty stack");
+
+  TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 1),
+                                "Failed to push to stack");
+
+  TEST_ASSERT_EQUAL_INT_MESSAGE(-1, stPeek(&st, NULL),
+                                "Can't pop to NULL");
   stDestroy(&st, NULL);
 
   TEST_ASSERT_NULL_MESSAGE(st, "st wasn't NULL after Stack deallocation");
@@ -184,8 +229,10 @@ int main(void)
    RUN_TEST(test_mkStack);
    RUN_TEST(test_push_one);
    RUN_TEST(test_push_several);
+   RUN_TEST(test_pop_failure);
    RUN_TEST(test_pop_one);
    RUN_TEST(test_pop_several);
+   RUN_TEST(test_peek_failure);
    RUN_TEST(test_peek_one);
    RUN_TEST(test_peek_several);
 

@@ -22,6 +22,9 @@ static void test_push_one(void)
                                 "Failed to push to stack");
   TEST_ASSERT_EQUAL_size_t_MESSAGE(1, stLength(&st),
                                    "Stack is incorrect length after pushing");
+  stDestroy(&st, NULL);
+
+  TEST_ASSERT_NULL_MESSAGE(st, "st wasn't NULL after Stack deallocation");
 }
 
 int main(void)

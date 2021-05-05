@@ -14,3 +14,5 @@ size_t stLength(Stack *st);
 
 // Destroys the head of the list.
 int stPop(Stack *st, SData *dest);
+
+void stDestroy(Stack *st, void (*kill)(SData));

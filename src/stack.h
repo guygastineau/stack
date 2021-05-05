@@ -34,4 +34,9 @@ size_t stLength(Stack *st);
 // Destroys the head of the list.
 int stPop(Stack *st, SData *dest);
 
+// kill is a function pointer that will destroy SData
+// values if they need to be freed. It is user supplied.
+// If you are using a scalar type for SData, then pass NULL.
+void stDestroy(Stack *st, void (*kill)(SData));
+
 #endif // STACK_H

@@ -110,65 +110,6 @@ static void test_pop_several(void)
   TEST_ASSERT_NULL_MESSAGE(st, "st wasn't NULL after Stack deallocation");
 }
 
-static void test_pop_one(void)
-{
-  Stack st = mkStack();
-  TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 1),
-                                "Failed to push to stack");
-  SData data;
-  TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPop(&st, &data),
-                                "Failed to pop singleton from stack");
-  TEST_ASSERT_EQUAL_INT_MESSAGE(1, data, "Got wrong data from popping");
-
-  TEST_ASSERT_EQUAL_size_t_MESSAGE(0, stLength(&st),
-                                   "stPop didn't change the length");
-
-  stDestroy(&st, NULL);
-
-  TEST_ASSERT_NULL_MESSAGE(st, "st wasn't NULL after Stack deallocation");
-}
-
-static void test_pop_several(void)
-{
-  Stack st = mkStack();
-  TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 1),
-                                "Failed to push to stack");
-  TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 2),
-                                "Failed to push to stack");
-  TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 3),
-                                "Failed to push to stack");
-  TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 4),
-                                "Failed to push to stack");
-  SData data;
-
-  TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPop(&st, &data),
-                                "Failed to pop singleton from stack");
-  TEST_ASSERT_EQUAL_INT_MESSAGE(4, data, "Got wrong data from popping");
-
-  TEST_ASSERT_EQUAL_size_t_MESSAGE(3, stLength(&st),
-                                   "stPop didn't change the length");
-
-  TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPop(&st, &data),
-                                "Failed to pop singleton from stack");
-  TEST_ASSERT_EQUAL_INT_MESSAGE(3, data, "Got wrong data from popping");
-
-  TEST_ASSERT_EQUAL_size_t_MESSAGE(2, stLength(&st),
-                                   "stPop didn't change the length");
-
-  TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPop(&st, &data),
-                                "Failed to pop singleton from stack");
-  TEST_ASSERT_EQUAL_INT_MESSAGE(2, data, "Got wrong data from popping");
-
-  TEST_ASSERT_EQUAL_size_t_MESSAGE(1, stLength(&st),
-                                   "stPop didn't change the length");
-
-  // Left one, so we need to destroy it.
-
-  stDestroy(&st, NULL);
-
-  TEST_ASSERT_NULL_MESSAGE(st, "st wasn't NULL after Stack deallocation");
-}
-
 static void test_peek_one(void)
 {
   Stack st = mkStack();

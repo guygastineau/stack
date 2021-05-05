@@ -195,7 +195,7 @@ static void test_peek_several(void)
 
   TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPop(&st, &data),
                                 "Failed to pop singleton from stack");
-  TEST_ASSERT_EQUAL_INT_MESSAGE(3, data, "Got wrong data from popping");
+  TEST_ASSERT_EQUAL_INT_MESSAGE(4, data, "Got wrong data from popping");
 
   TEST_ASSERT_EQUAL_size_t_MESSAGE(3, stLength(&st),
                                    "stPop didn't change the length");

@@ -17,6 +17,7 @@ static void test_mkStack(void)
 
 static void test_push_one(void)
 {
+  TEST_IGNORE();
   Stack st = mkStack();
   TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 1),
                                 "Failed to push to stack");
@@ -29,6 +30,7 @@ static void test_push_one(void)
 
 static void test_push_several(void)
 {
+  TEST_IGNORE();
   Stack st = mkStack();
   TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 1),
                                 "Failed to push to stack");
@@ -53,6 +55,7 @@ static void test_push_several(void)
 
 static void test_pop_failure(void)
 {
+  TEST_IGNORE();
   Stack st = mkStack();
 
   SData data;
@@ -77,6 +80,7 @@ static void test_pop_failure(void)
 
 static void test_pop_one(void)
 {
+  TEST_IGNORE();
   Stack st = mkStack();
   TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 1),
                                 "Failed to push to stack");
@@ -95,6 +99,7 @@ static void test_pop_one(void)
 
 static void test_pop_several(void)
 {
+  TEST_IGNORE();
   Stack st = mkStack();
   TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 1),
                                 "Failed to push to stack");
@@ -136,6 +141,7 @@ static void test_pop_several(void)
 
 static void test_peek_failure(void)
 {
+  TEST_IGNORE();
   Stack st = mkStack();
 
   SData data;
@@ -157,6 +163,7 @@ static void test_peek_failure(void)
 
 static void test_peek_one(void)
 {
+  TEST_IGNORE();
   Stack st = mkStack();
   TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 1),
                                 "Failed to push to stack");
@@ -175,6 +182,7 @@ static void test_peek_one(void)
 
 static void test_peek_several(void)
 {
+  TEST_IGNORE();
   Stack st = mkStack();
   TEST_ASSERT_EQUAL_INT_MESSAGE(1, stPush(&st, 1),
                                 "Failed to push to stack");

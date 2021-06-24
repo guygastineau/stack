@@ -13,7 +13,7 @@
 typedef struct Node* Stack;
 
 // Redefine the enclosed datatype with the following alias.
-// Don't rredefine it for simple testing though.
+// Don't redefine it for simple testing though.
 typedef int SData;
 
 // Initially we will test with `mkStack', `stLength', and `stDestroy'.
